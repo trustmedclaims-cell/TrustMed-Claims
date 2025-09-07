@@ -1,0 +1,152 @@
+import { motion } from "framer-motion";
+import { ShieldCheck, FileText, CheckCheck, Mail, Phone, ArrowRight, ClipboardList, DollarSign, Clock, UserCheck, Building2, MapPin, Send, Sparkles, Star, Trophy, Users } from "lucide-react";
+
+const COMPANY = {
+  name: "TrustMed Claims",
+  tagline: "Focus on patients. We handle the claims.",
+  phone: "0324 2240860",
+  whatsapp: "https://wa.me/923242240860",
+  email: "trustmedclaims@gmail.com",
+  address: "Gujranwala, Pakistan",
+  manager: "Senior Claim Manager Ms. Hira",
+};
+
+const nav = [
+  { label: "Services", href: "#services" },
+  { label: "Benefits", href: "#benefits" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Process", href: "#process" },
+  { label: "Experience", href: "#experience" },
+  { label: "Success Stories", href: "#stories" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
+
+const Section = ({ id, title, subtitle, children }) => (
+  <section id={id} className="py-16 md:py-24">
+    <div className="max-w-6xl mx-auto px-6">
+      {title && (
+        <div className="mb-10 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-blue-800">{title}</h2>
+          {subtitle && (
+            <p className="text-slate-600 mt-2 md:mt-3 max-w-3xl mx-auto">{subtitle}</p>
+          )}
+        </div>
+      )}
+      {children}
+    </div>
+  </section>
+);
+
+const Card = ({ children, className = "" }) => (
+  <div className={`rounded-2xl shadow-md border border-slate-200 bg-white ${className}`}>{children}</div>
+);
+
+export default function TrustMedClaimsSite() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-slate-50 to-indigo-50 text-slate-900">
+      {/* Header */}
+      <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/90 border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="p-2 rounded-xl bg-blue-600 text-white">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <div className="font-semibold tracking-tight group-hover:text-blue-700 transition-colors">
+              {COMPANY.name}
+            </div>
+          </a>
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            {nav.map((n) => (
+              <a key={n.href} href={n.href} className="hover:text-blue-700 transition-colors">
+                {n.label}
+              </a>
+            ))}
+            <a
+              href={COMPANY.whatsapp}
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+            >
+              <Phone className="w-4 h-4" /> WhatsApp
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-50 to-slate-50" />
+        <div className="max-w-6xl mx-auto px-6 pt-16 md:pt-28 pb-16 md:pb-24 relative">
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-6xl font-extrabold tracking-tight text-blue-900"
+          >
+            Streamlined Medical Claim Outsourcing
+          </motion.h1>
+          <p className="mt-4 md:mt-6 text-lg md:text-xl text-slate-700 max-w-3xl">
+            {COMPANY.tagline} — Accurate documentation, faster reimbursements, and lower administrative costs for
+            hospitals, clinics, and diagnostic centers.
+          </p>
+          <p className="mt-2 text-slate-600 font-medium">{COMPANY.manager}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={COMPANY.whatsapp}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+            >
+              <Sparkles className="w-5 h-5" /> Get a Free Consultation
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 hover:border-slate-400 bg-white"
+            >
+              <Mail className="w-5 h-5" /> Contact Us
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience */}
+      <Section id="experience" title="Our Work Experience" subtitle="Years of expertise in medical claim handling, insurance coordination, and hospital administration.">
+        <div className="grid md:grid-cols-2 gap-6">
+          <Card className="p-6">
+            <h3 className="text-lg font-semibold text-blue-800 mb-3">Professional Background</h3>
+            <p className="text-slate-700 text-sm leading-relaxed">
+              With extensive experience in hospital administration and insurance claim processing, our team has handled hundreds of files across multiple insurance panels. From corporate file preparation to email correspondence with insurers, we have streamlined the process for providers in Gujranwala and beyond.
+            </p>
+          </Card>
+          <Card className="p-6">
+            <h3 className="text-lg font-semibold text-blue-800 mb-3">Core Skills</h3>
+            <ul className="text-sm text-slate-700 space-y-2 list-disc pl-5">
+              <li>Expert in preparing complete medical claim documentation.</li>
+              <li>Strong liaison with insurance companies for timely reimbursements.</li>
+              <li>Efficient use of hospital management systems & file tracking.</li>
+              <li>Ability to manage high-stress, high-volume environments.</li>
+            </ul>
+          </Card>
+        </div>
+      </Section>
+
+      {/* Success Stories */}
+      <Section id="stories" title="Success Stories" subtitle="Real results we’ve achieved for our clients.">
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { icon: Trophy, title: "90% Faster Processing", desc: "Helped a local hospital cut reimbursement delays from 3 months to just 2 weeks." },
+            { icon: Star, title: "Reduced Rejections", desc: "Minimized claim rejection rates by over 70% with improved documentation." },
+            { icon: Users, title: "Expanded Reach", desc: "Supported multiple Gujranwala clinics in getting empanelled smoothly with insurers." },
+          ].map((s, i) => (
+            <Card key={i} className="p-6 text-center hover:shadow-lg transition-shadow">
+              <div className="flex justify-center mb-4 text-blue-700">
+                <s.icon className="w-10 h-10" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2 text-blue-900">{s.title}</h3>
+              <p className="text-slate-700 text-sm">{s.desc}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      {/* Keep rest of the existing sections (Services, Benefits, Pricing, Process, About, Contact) */}
+    </div>
+  );
+}
